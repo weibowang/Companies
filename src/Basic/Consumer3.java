@@ -12,8 +12,9 @@ public class Consumer3 implements Runnable {
 			try {
 				q.take();
 				System.out.println("-1  size:" + q.size());
-				int num = (int) (Math.random() * ( 300 - 100 ));
-				Thread.sleep(num);
+				Thread.sleep(100);
+//				int num = (int) (Math.random() * ( 300 - 100 ));
+//				Thread.sleep(num);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

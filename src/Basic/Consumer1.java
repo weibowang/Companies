@@ -9,21 +9,20 @@ public class Consumer1 implements Runnable {
 		while (true) {
 			
 				//ArrayList<Integer> array = ProducerConsumer.array;
-			//System.out.println("call-");
-			while (ProducerConsumer.array.isEmpty()) {
-				System.out.println("switch-");
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				//array.wait(300);
-			}
+			System.out.println("call-");
 			synchronized (ProducerConsumer.array) {
-				ProducerConsumer.array.remove(0);
-				System.out.println("-1 " + " current size " + ProducerConsumer.array.size());
-				//array.notifyAll();
+				if (ProducerConsumer.array.isEmpty()) {
+					System.out.println("switch-");
+				} else {
+					ProducerConsumer.array.remove(0);
+					System.out.println("-1 " + " current size " + ProducerConsumer.array.size());
+				}
+			}
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

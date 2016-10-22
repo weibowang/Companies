@@ -21,7 +21,13 @@ public class Consumer2 implements Runnable {
 						
 					ProducerConsumer.array.remove(0);
 					System.out.println("-1 " + " current size " + ProducerConsumer.array.size());
-					ProducerConsumer.array.notifyAll();
+					ProducerConsumer.array.notifyAll();  //Switch to notify() will generate deadlock
+				}
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}

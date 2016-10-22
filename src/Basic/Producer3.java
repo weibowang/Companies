@@ -12,8 +12,7 @@ public class Producer3 implements Runnable {
 			try {
 				q.put(1);
 				System.out.println("+1  size:" + q.size());
-				int num = (int) (Math.random() * ( 300 - 100 ));
-				Thread.sleep(num);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -16,7 +16,7 @@ public class Producer5 implements Runnable {
 				} else {
 					long current = System.currentTimeMillis();
 					q.add(current);
-					//System.out.println("+1 " + " size: " + q.size() + "  current: " + current); //time and size may not be consistent
+					System.out.println("+1 " + " size: " + q.size() + "  current: " + current); //time and size may not be consistent
 				}
 			}
 			try {

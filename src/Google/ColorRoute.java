@@ -24,7 +24,7 @@ public class ColorRoute {
 		allNodes.add(n5);
 		List<List<Node>> result = ColorRoute(allNodes);
 		for (int i = 0; i < result.size(); i++) {
-			System.out.println("**************\n");
+			System.out.println("*************\n");
 			for (int j = 0; j < result.get(i).size(); j++) {
 				System.out.print(result.get(i).get(j).val + " ");
 			}

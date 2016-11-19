@@ -9,7 +9,7 @@ public class ProducerConsumer {
 	private static BlockingQueue pbq = new PriorityBlockingQueue();
 	private static PriorityQueue pq = new PriorityQueue();
 	public static void main(String[] args) {
-		System.out.println("Main start...");
+		System.out.println("Main start....");
 //		Thread p = new Thread(new Producer1());
 //		Thread p2 = new Thread(new Producer1());
 //		Thread p3 = new Thread(new Producer1());
@@ -61,8 +61,7 @@ public class ProducerConsumer {
 //		p3.start();
 //		c.start();
 //		c2.start();
-//		c3.start();
-		
+//		c3.start();		
 		
 		Thread p = new Thread(new Producer5(pq));
 		Thread p2 = new Thread(new Producer5(pq));

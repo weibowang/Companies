@@ -49,9 +49,5 @@ Temporary Items
 
 # Java class file
 */bin/*
-/bin/*
+bin/*
 *.class
-
-*.class
-
-bin/Google/InfoSystem.class

@@ -60,6 +60,7 @@ public class InfoSystem {
 			timeMap.remove(time);
 		}
 	}
+
 	
 	public static void main(String[] args) {
 		MySystem s = new MySystem();

@@ -14,7 +14,6 @@ public class ItemRecommendations {
     
     }
     
-    
     public static int[] determineRecommendations(String itemId, String[] purchases) {
         int[] result = new int[2];
         if (purchases == null) {

@@ -61,7 +61,6 @@ public class InfoSystem {
 		}
 	}
 
-	
 	public static void main(String[] args) {
 		MySystem s = new MySystem();
 		s.add(1, 4);

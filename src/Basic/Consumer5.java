@@ -1,6 +1,7 @@
 package Basic;
 
-import java.util.*;
+import java.util.PriorityQueue;
+import java.util.concurrent.*;
 
 public class Consumer5 implements Runnable {
 	PriorityQueue q;

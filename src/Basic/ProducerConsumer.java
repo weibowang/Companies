@@ -63,6 +63,7 @@ public class ProducerConsumer {
 //		c2.start();
 //		c3.start();		
 		
+		
 		Thread p = new Thread(new Producer5(pq));
 		Thread p2 = new Thread(new Producer5(pq));
 		Thread p3 = new Thread(new Producer5(pq));

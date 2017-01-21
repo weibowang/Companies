@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /*
- * ¸øÒ»¸östring, ÕÒ³ölexical order ×îÐ¡µÄ£¬ size==kµÄ£¬ subsequence, (note, not substring)
+ * ï¿½ï¿½Ò»ï¿½ï¿½string, ï¿½Ò³ï¿½lexical order ï¿½ï¿½Ð¡ï¿½Ä£ï¿½ size==kï¿½Ä£ï¿½ subsequence, (note, not substring)
 String findMin(String s, k){} . å›´è§‚æˆ‘ä»¬@1point 3 acres
 e.g.. å›´è§‚æˆ‘ä»¬@1point 3 acres
 input
@@ -12,7 +12,7 @@ s=pineapple, k==3,
 
 output: ale
 ale is the lexical order smallest subsequnce of length 3. 
-ÎÒÊÇ±©Á¦Çó½âµÄ£º 
+ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ 
 1. find the first occur position of distinct char. 
 2. then start from that position. . from: 1point3acres.com/bbs 
 3. dfs to find lenght==3, subsequence(dfs, combination way); 
@@ -25,10 +25,13 @@ public class MinLexicalOrder {
 	
 	public static void main(String[] args) {
 		String s = "pineapple";
-		String result = solution1(s, 5);
-		String result2 = solution2(s, 5);
+		int k = 3;
+		String result = solution1(s, k);
+		String result2 = solution2(s, k);
+		String result3 = findMin(s, k);
 		System.out.println(result);
 		System.out.println(result2);
+		System.out.println(result3);
 	}
 	
 	private static String solution2(String s, int k) {
@@ -45,9 +48,6 @@ public class MinLexicalOrder {
 				stack.pop();
 			}
 			stack.push(s.charAt(i));
-		}
-		while (stack.size() > k) {
-			stack.pop();
 		}
 		StringBuilder sb = new StringBuilder();
 		while (!stack.isEmpty()) {
@@ -82,6 +82,58 @@ public class MinLexicalOrder {
 		}
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static String findMin(String s, int k) {
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			if (stack.isEmpty()) {
+				stack.push(c);
+				continue;
+			}
+			int count = s.length() - i;
+			while (!stack.isEmpty() && stack.peek() > c && stack.size() + count > k) {
+				stack.pop();
+			}
+			stack.push(c);
+		}
+		StringBuilder sb = new StringBuilder();
+		while (!stack.isEmpty()) {
+			sb.append(stack.pop());
+		}
+		sb.reverse();
+		return sb.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 

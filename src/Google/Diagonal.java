@@ -18,6 +18,11 @@ public class Diagonal {
 		} else {
 			System.out.println("false");
 		}
+		if (isSymmetric3(matrix)) {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+		}
 	}
 	
 	public static void printDiagonal(int[][] matrix) {
@@ -166,6 +171,41 @@ public class Diagonal {
 			bX = count;
 			bY = count;
 			len = count;
+		}
+		return true;
+	}
+	
+	public static boolean isSymmetric3(int[][] matrix) {
+		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+			return true;
+		}
+		int m = matrix.length;
+		int n = matrix[0].length;
+		int aX = 0;
+		int aY = 0;
+		int bX = 0;
+		int bY = 0;
+		for (int i = 0; i < m + n; i++) {
+			aX = i >= n ? i - n + 1 : 0;
+			aY = i >= n ? n - 1 : i;
+			bX = i >= m - 1 ? m - 1 : i;
+			bY = i >= m - 1 ? i - m + 1: 0;
+			if (!check2(matrix, aX, aY, bX, bY)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean check2(int[][] matrix, int aX, int aY, int bX, int bY) {
+		while (aX <= bX && aY >= bY) {
+			if (matrix[aX][aY] != matrix[bX][bY]) {
+				return false;
+			}
+			aX++;
+			aY--;
+			bX--;
+			bY++;
 		}
 		return true;
 	}

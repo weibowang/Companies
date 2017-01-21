@@ -90,6 +90,7 @@ public class ColorRoute {
 				HashSet<Node> currentUsed = new HashSet<Node>(used);
 				currentUsed.add(node);
 				buildRoute(result, currentList, currentUsed);
+
 			}
 		}
 	}

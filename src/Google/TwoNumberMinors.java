@@ -11,6 +11,7 @@ public class TwoNumberMinors {
 		System.out.println(Arrays.toString(list.toArray()));
 	}
 	
+	
 	public static List<Integer> TwoNumberSubtracts(List<Integer> list) {
 		HashSet<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < list.size(); i++) {
@@ -30,6 +31,8 @@ public class TwoNumberMinors {
 							}
 						}
 					}
+//					set.add(list.get(i));
+//					set.add(list.get(j));
 				}
 			}
 			if (addList.isEmpty()) {

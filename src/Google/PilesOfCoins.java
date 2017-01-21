@@ -1,5 +1,7 @@
 package Google;
 
+import java.util.*;
+
 /*
  * 1. there are m piles of coins, each pile is consisted of coins with different values. you are allowed to take n coins home.
  *  However, you can only take coins from the top of each pile. What's the maximum value you can obtain..
@@ -7,8 +9,9 @@ package Google;
 public class PilesOfCoins {
 	public static void main(String[] args) {
 		int[][] coins = {{1, 7}, {4, 3, 2},{6, 1}};
-		int n = 2;
+		int n = 3;
 		System.out.println(PilesOfCoins(coins, n));
+		//System.out.println(PilesOfCoins2(coins, n));
 		System.out.println(PilesOfCoinsRecursion(coins, n));
 	}
 	
@@ -35,6 +38,40 @@ public class PilesOfCoins {
 		return dp[coins.length][n];
 	}
 	
+	// use priority queue, this is wrong solution
+//	static class TypeOne implements Comparable<TypeOne>{
+//		int val;
+//		int x;
+//		int y;
+//		public TypeOne(int val, int x, int y) {
+//			this.val = val;
+//			this.x = x;
+//			this.y = y;
+//		}
+//		
+//		public int compareTo(TypeOne right) {
+//			return right.val - this.val;
+//		}
+//	}
+//	public static int PilesOfCoins2(int[][] coins, int n) {
+//		PriorityQueue<TypeOne> pq = new PriorityQueue<TypeOne>();
+//		for (int i = 0; i < coins.length; i++) {
+//			TypeOne t = new TypeOne(coins[i][0], i, 0);
+//			pq.add(t);
+//		}
+//		int sum = 0;
+//		while (n > 0) {
+//			TypeOne cur = pq.poll();
+//			sum += cur.val;
+//			if (cur.y + 1 < coins[cur.x].length) {
+//				TypeOne t = new TypeOne(coins[cur.x][cur.y + 1], cur.x, cur.y + 1);
+//				pq.add(t);
+//			}
+//			n--;
+//		}
+//		return sum;
+//	}
+		
 	
 	// recursion
 	public static int PilesOfCoinsRecursion(int[][] coins, int n) {

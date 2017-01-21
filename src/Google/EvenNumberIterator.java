@@ -3,16 +3,22 @@ package Google;
 public class EvenNumberIterator {
 	
 	/*
-	 * ÊµÏÖÒ»¸öiterator, input ÊÇÒ»¸öarray{3, 8, 0, 12, 2, 9}, Ï£ÍûÊä³öÊÇ {8, 8, 8, 9, 9},   
-	 * Ò²¾ÍÊÇeventh number´ú±í ´ÊÆµ£¬ oddth number ´ú±í´Ê£¬ {3, 8, 12, 0, 2, 9}£¬ ¾ÍÊÇ3¸ö8£¬ 0¸ö12£¬ 2¸ö9. 
-ºÍÃÀÃ¼ÉÌÁ¿ÁËÊäÈë²»ÓÃarray, ÓÃ¸öList<Integer> ¼òµ¥ºÃ¶à¡£ 
+	 * Êµï¿½ï¿½Ò»ï¿½ï¿½iterator, input ï¿½ï¿½Ò»ï¿½ï¿½array{3, 8, 0, 12, 2, 9}, Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {8, 8, 8, 9, 9},   
+	 * Ò²ï¿½ï¿½ï¿½ï¿½eventh numberï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æµï¿½ï¿½ oddth number ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ {3, 8, 12, 0, 2, 9}ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½8ï¿½ï¿½ 0ï¿½ï¿½12ï¿½ï¿½ 2ï¿½ï¿½9. 
+ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½array, ï¿½Ã¸ï¿½List<Integer> ï¿½òµ¥ºÃ¶à¡£ 
 	 */
 	
 	public static void main(String[] args) {
 		int array[] = {3, 8, 0, 12, 2, 9};
 		EvenNumberIterator e = new EvenNumberIterator(array);
 		while (e.hasNext()) {
-			System.out.println(e.next());
+			System.out.print(e.next() + " ");
+		}
+		System.out.println();
+		int array2[] = {3, 8, 0, 12, 2, 9};
+		EvenNumberIterator2 e2 = new EvenNumberIterator2(array2);
+		while (e2.hasNext()) {
+			System.out.print(e2.next() + " ");
 		}
 	}
 	
@@ -48,4 +54,36 @@ public class EvenNumberIterator {
 		globalIndex++;
 		return output[index];
 	}
+	
+	
+	static class EvenNumberIterator2 {
+		int[] record;
+		int[] nums;
+		EvenNumberIterator2(int[] nums) {
+			record = new int[2];
+			this.nums = nums;
+		}
+		
+		boolean hasNext() {
+			int x = record[0];
+			if (x == nums.length - 2 && record[1] == nums[nums.length - 2]) {
+				return false;
+			}
+			//System.out.println("AA");
+			return true;
+		}
+		
+		int next() {
+			while (nums[record[0]] <= record[1]) {
+				//System.out.println(record[0] + " " + nums[record[0]] + " " + record[1]);
+				record[0] = record[0] + 2;
+				record[1] = 0;
+			}
+			record[1]++;
+			return nums[record[0] + 1];
+			
+		}
+	}
+	
+	
 }

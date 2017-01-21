@@ -5,37 +5,37 @@ import java.util.*;
 /*
  * 
  * http://www.1point3acres.com/bbs/thread-182425-1-1.html
- * 5. Ó¡¶ÈÐ¡»ï£¬ Í¬Ê±²Î¿´ÉÏµÄÍ¼
-×î´ó¼ÙÆÚÎÊÌâ£¬ Ö®Ç°Ãæ¾­¿´µ½¹ýÕâ¸ö£¬ µ«ÊÇÃ»ÓÐ¾ßÌåµÄÃèÊö£¬ ¾Í·Å¹ýÁË¡£ ½á¹û¾ÍÃü±³µÄ±»¿¼µ½µÄ¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£ÎÒÀ´ÏêÏ¸ÃèÊöÏÂ
+ * 5. Ó¡ï¿½ï¿½Ð¡ï¿½ï£¬ Í¬Ê±ï¿½Î¿ï¿½ï¿½Ïµï¿½Í¼
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¬ Ö®Ç°ï¿½æ¾­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í·Å¹ï¿½ï¿½Ë¡ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 input: 
-a. ÓÐn¸ö³ÇÊÐ£¬ Ã¿¸ö³ÇÊÐÖ®¼äÓÐ·ÉÐÐÊ±¼ä£¬ 
-b. ¸ø¸ö·ÉÐÐÊ±¼ä£¬ .
-c. ¸ø¸övacation array, ´ú±íÃ¿¸ö³ÇÊÐÃ¿ÖÜµÄ¼ÙÆÚ¡£
-d. ´ÓµÚÒ»¸ö³ÇÊÐ¿ªÊ¼ 
+a. ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ 
+b. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ .
+c. ï¿½ï¿½ï¿½ï¿½vacation array, ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ÜµÄ¼ï¿½ï¿½Ú¡ï¿½
+d. ï¿½Óµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½Ê¼ 
 
-ÒâË¼¾ÍÊÇÃ¿¸öÖÜÄã¿ÉÒÔ´ôÔÚÒ»¸ö³ÇÊÐ£¬ È»ºóÏíÊÜÄÇ¸ö³ÇÊÐµÄ¼ÙÆÚ¡£ 
-»¹ÓÐ¸öÏÞÖÆ£¬ ¾ÍÊÇ³ÇÊÐÓë³ÇÊÐÖ®¼äµÄ·ÉÐÐÊ±¼ä²»ÄÜ³¬¹ý¸ø¶¨µÄ·ÉÐÐÊ±¼ä
+ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ÐµÄ¼ï¿½ï¿½Ú¡ï¿½ 
+ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ä·ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½Ü³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 output: . 
-Çóx weeks ÄãÄÜÏíÊÜµ½µÄ×î´ó¼ÙÆÚ×ÜºÍ
-Äã×Ô¼ºÉè¼ÆÊäÈëµÄÊý¾Ý½á¹¹
+ï¿½ï¿½x weeks ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üºï¿½
+ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹
 
-ÃèÊöÆðÀ´ÕæËûÄ¸Ç×µÄ·±Ëö£¬ ¹Ö²»µÃÃ»¿´µ½ÏêÏ¸µÄËµÃ÷¡£ 
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½×µÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö²ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ 
 
-ÎÒµÄ´ó¸ÅÏë·¨£º 
-1. È¥µôÄÇÐ©·ÉÐÐÊ±¼ä³¬¹ý¸ø¶¨·ÉÐÐÊ±¼äµÄ±ß¡£ 
-2. ÓÃadjancey list×öµÄ£¬ . 
-3. È»ºóbfs, ±©Á¦Çó½â¡£ 
-4. Ã»Ð´Íê¡£¡£¡£¡£¡£¡£
+ï¿½ÒµÄ´ï¿½ï¿½ï¿½ë·¨ï¿½ï¿½ 
+1. È¥ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä³¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ä±ß¡ï¿½ 
+2. ï¿½ï¿½adjancey listï¿½ï¿½ï¿½Ä£ï¿½ . 
+3. È»ï¿½ï¿½bfs, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£ 
+4. Ã»Ð´ï¿½ê¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-ÈçÍ¼ËùÊ¾£¬ ×î´óµÄÓ¦¸Ã 
+ï¿½ï¿½Í¼ï¿½ï¿½Ê¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ 
 week1, A, sum=2; 
 week2, B/C, sum=sum+1; 
-week3, »Øµ½A, sum+=3.
+week3, ï¿½Øµï¿½A, sum+=3.
 total sum =6 
 
 
-DP ·½³Ì´ó¸ÅÊÇ dp(i)(j) = Math.max(dp(i-1)(fromCity)+map(i)(j), dp(i)(j)
+DP ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ï¿½ dp(i)(j) = Math.max(dp(i-1)(fromCity)+map(i)(j), dp(i)(j)
 
 
 dp[i][j]    i = week  j = the max weeks to stay at j city at i week
@@ -46,10 +46,13 @@ public class CityVacation {
 	public static void main(String[] args) {
 		int[][] edges = new int[4][4];
 		int[][] matrix = new int[3][4];
+		int len = 10;
 		constructEdges(edges);
 		constructMatrix(matrix);
-		int result = CityVacation(matrix, edges, 10);
+		int result = CityVacation(matrix, edges, len);
 		System.out.println(result);
+		int result2 = CityVacation2(matrix, edges, len);
+		System.out.println(result2);
 	}
 	
 	public static void constructEdges(int[][] edges) {
@@ -127,4 +130,54 @@ public class CityVacation {
 		}
 		return max;
 	}
+	
+	// same solution as first one
+	public static int CityVacation2(int[][] matrix, int[][] edges, int len) {
+		int[][] dp = new int[matrix.length][matrix[0].length];
+		for (int i = 0; i < matrix[0].length; i++) {
+			dp[0][i] = matrix[0][i];
+		}
+		HashMap<Integer, HashSet<Integer>> map = new HashMap<Integer, HashSet<Integer>>();
+		for (int i = 0; i < edges.length; i++) {
+			for (int j = 0; j < edges[0].length; j++) {
+				if (edges[i][j] != 0 && edges[i][j] <= len) {
+					if (map.containsKey(i)) {
+						map.get(i).add(j);
+					} else {
+						HashSet<Integer> set = new HashSet<Integer>();
+						set.add(j);
+						set.add(i);
+						map.put(i, set);
+					}
+					if (map.containsKey(j)) {
+						map.get(j).add(i);
+					} else {
+						HashSet<Integer> set = new HashSet<Integer>();
+						set.add(i);
+						set.add(j);
+						map.put(j, set);
+					}
+				}
+			}
+		}
+		for (int i = 0; i < dp[0].length; i++) {
+			dp[0][i] = matrix[0][i];
+		}
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 0; j < dp[0].length; j++) {
+				if (map.containsKey(j)) {
+					HashSet<Integer> set = map.get(j);
+					for (int x : set) {
+						dp[i][j] = Math.max(dp[i][j], dp[i - 1][x] + matrix[i][j]);
+					}
+				}
+			}
+		}
+		int max = 0;
+		for (int i = 0; i < dp[0].length; i++) {
+			max = Math.max(dp[dp.length - 1][i], max);
+		}
+		return max;
+	}
+
 }

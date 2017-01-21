@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /*
- * ¸øÒ»¿Å¶þ²æÊ÷£¬·µ»ØÖØ¸´µÄsubtree¡£±ÈÈç£º
+ * ï¿½ï¿½Ò»ï¿½Å¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½subtreeï¿½ï¿½ï¿½ï¿½ï¿½ç£º
                   1
                 /   \
               2      3
@@ -12,7 +12,7 @@ import java.util.*;
            4      2     4
                  /
                 4
-½á¹ûÓ¦¸Ã·µ»Ø[ ( 2 -> 4), (4) ] Á½¿ÅÊ÷¡£
+ï¿½ï¿½ï¿½Ó¦ï¿½Ã·ï¿½ï¿½ï¿½[ ( 2 -> 4), (4) ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class SameSubtree {
 	public static class TreeNode {
@@ -37,6 +37,25 @@ public class SameSubtree {
 		root.right.left = new TreeNode(2);
 		root.right.left.left = new TreeNode(4);
 		List<TreeNode> result = sameSubtree(root);
+		for (int i = 0; i < result.size(); i++) {
+			TreeNode n = result.get(i);
+			Queue<TreeNode> q = new LinkedList<TreeNode>();
+			q.add(n);
+			while (!q.isEmpty()) {
+				TreeNode node = q.poll();
+				System.out.print(node.val + " ");
+				if (node.left != null) {
+					q.add(node.left);
+				}
+				if (node.right != null) {
+					q.add(node.right);
+				}
+			}
+			System.out.println();
+		}
+		
+		System.out.println("*********");
+		result = dfs(root);
 		for (int i = 0; i < result.size(); i++) {
 			TreeNode n = result.get(i);
 			Queue<TreeNode> q = new LinkedList<TreeNode>();
@@ -110,6 +129,8 @@ public class SameSubtree {
 		if (root == null) {
 			return;
 		}
+		helper(root.left, result, map);
+		helper(root.right, result, map);
 		if (map.containsKey(root.val)) {
 			ArrayList<TreeNode> list = map.get(root.val);
 			for (int i = 0; i < list.size(); i++) {
@@ -122,8 +143,7 @@ public class SameSubtree {
 			list.add(root);
 			map.put(root.val, list);
 		}
-		helper(root.left, result, map);
-		helper(root.right, result, map);
+		
 	}
 	
 	private static boolean isSameTree(TreeNode left, TreeNode right) {
@@ -141,4 +161,5 @@ public class SameSubtree {
 		}
 		return isSameTree(left.left, right.left) && isSameTree(left.right, right.right);
 	}
+	
 }

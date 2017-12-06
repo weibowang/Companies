@@ -9,9 +9,9 @@ import java.util.*;
 public class PilesOfCoins {
 	public static void main(String[] args) {
 		int[][] coins = {{1, 7}, {4, 3, 2},{6, 1}};
-		int n = 3;
+		int n = 7;
 		System.out.println(PilesOfCoins(coins, n));
-		//System.out.println(PilesOfCoins2(coins, n));
+		System.out.println(PilesOfCoins2(coins, n));
 		System.out.println(PilesOfCoinsRecursion(coins, n));
 	}
 	
@@ -99,4 +99,24 @@ public class PilesOfCoins {
 		}
 		return max;
 	}
+	
+	
+	public static int PilesOfCoins2(int[][] coins, int n) {
+		int[][] dp = new int[coins.length + 1][n + 1];
+		for (int i = 1; i <= coins.length; i++) {
+			
+			for (int j = 1; j <= n; j++) {
+				int sum = 0;
+				dp[i][j] = dp[i - 1][j];
+				for (int k = 0; k < j; k++) {
+					if (k < coins[i - 1].length) {
+						sum += coins[i - 1][k];
+					}
+					dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - k - 1] + sum);
+				}
+			}
+		}
+		return dp[coins.length][n];
+	}
+
 }

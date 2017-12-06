@@ -48,8 +48,8 @@ public class NaturalComparator implements Comparator<String>{
 	}
 	
 	public static void main(String[] args) {
-		String a = "abc";
-		String b = "ab9";
+		String a = "ab92";
+		String b = "ab91";
 		NaturalComparator n = new NaturalComparator();
 		System.out.println(n.compare(a, b));
 	}

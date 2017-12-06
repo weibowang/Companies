@@ -14,81 +14,54 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		int[][] A = new int[5][3];
-		A[0][0] = 1;
-		A[0][1] = 3;
-		A[0][2] = 2;
-		A[1][0] = 4;
-		A[1][1] = 6;
-		A[1][2] = 5;
-		A[2][0] = 7;
-		A[2][1] = 9;
-		A[2][2] = 8;
-		A[3][0] = 13;
-		A[3][1] = 15;
-		A[3][2] = 14;
-		A[4][0] = 10;
-		A[4][1] = 12;
-		A[4][2] = 11;
-		List<Integer> res = solution2(A);
-		System.out.println(res.get(0));
-		System.out.println(res.get(1));
+		TreeNode n = new TreeNode(1);
+		n.left = new TreeNode(2);
+		n.right = new TreeNode(3);
+		System.out.println(maxPathSum(n));
 	}
 	
 	
-	public static List<Integer> solution2(int[][] A) {
-        List<Integer> res = new ArrayList<Integer>();
-        if (A == null || A.length == 0 || A[0].length == 0) {
-            return res;
-        }
-        int xStart = 0;
-        int yStart = 0;
-        int xEnd = A.length - 1;
-        int yEnd = A[0].length - 1;
-        while (xStart + 1 < xEnd && yStart + 1 < yEnd) {
-            System.out.println("bb " + xStart + " " + xEnd);
-            int xMid = (xStart + xEnd) / 2;
-            int yMid = (yStart + yEnd) / 2;
-            //System.out.println(xStart + " " + xMid + " " +xEnd);
-            if (check(A, xMid, yMid)) {
-                res.add(xMid);
-                res.add(yMid);
-                return res;
-            } else if (A[xMid + 1][yMid] > A[xMid][yMid]) {
-                xStart = xMid + 1;
-                System.out.println(xStart);
-                continue;
-            } else if (A[xMid - 1][yMid] > A[xMid][yMid]) {
-                xEnd = xMid;
-                continue;
-            } else if (A[xMid][yMid + 1] > A[xMid][yMid]) {
-                yStart = yMid + 1;
-                continue;
-            } else if (A[xMid][yMid - 1] > A[xMid][yMid]) {
-                yEnd = yMid;
-                continue;
-            }
-            System.out.println("aa " + xStart);
-        }
-        //System.out.println("?? ");
-        if (check(A, xStart, xEnd)) {
-            res.add(xStart);
-            res.add(xEnd);
-            return res;
-        }
-        res.add(yStart);
-        res.add(yEnd);
-        return res;
+	static int max = Integer.MIN_VALUE;
+    static public int maxPathSum(TreeNode root) {
+        helper(root);
+        return max;
     }
     
-    private static boolean check(int[][] A, int i, int j) {
-        if (i <= 0 || i >= A.length - 1 || j <= 0 || j >= A[0].length - 1) {
-            return false;
+    public static int helper(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
-        if (A[i][j] > A[i+1][j] && A[i][j] > A[i-1][j] && A[i][j] > A[i][j+1] && A[i][j] > A[i][j-1]) {
-            return true;
+        // if (root.left == null && root.right == null) {
+        //     max = Math.max(max, root.val);
+        //     return root.val;
+        // }
+        //System.out.println(root.val);
+        int left = helper(root.left);
+        int right = helper(root.right);
+        int val = root.val;
+        if (left > 0) {
+            //System.out.println("left " + left);
+            val += left;
         }
-        return false;
+        if (right > 0) {
+            //System.out.println("right " + right);
+            val += right;
+        }
+        //System.out.println("* " + val);
+        max = Math.max(val, max);
+        if (left > right) {
+            if (left > 0) {
+                return root.val + left;
+            } else {
+                return root.val;
+            }
+        } else {
+            if (right > 0) {
+                return root.val + right;
+            } else {
+                return root.val;
+            }
+        }
     }
        
 }

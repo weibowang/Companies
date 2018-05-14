@@ -30,43 +30,40 @@ public class CoinsInALineIII {
 	}
 	
 	public static void main(String[] args) {
-		int[] coins = {3, 9, 1, 2};
+		int[] coins = {3, 2, 2, 4, 5, 1};
 		boolean check = CoinsInALineIII(coins);
 		if (check) {
 			System.out.println("true");
 		} else {
 			System.out.println("false");
 		}
+
 	}
 	
+
 	public static boolean CoinsInALineIII(int[] coins) {
-		if (coins == null || coins.length == 0) {
-			return false;
+		int[][] dp = new int[coins.length][coins.length];
+		int[] sum = new int[coins.length + 1];
+		for (int i = 1; i <= coins.length; i++) {
+			sum[i] = sum[i - 1] + coins[i - 1];
 		}
-		
-		Pair[][] dp = new Pair[coins.length][coins.length];
-		for (int i = 0; i < dp.length; i++) {
-			for (int j = 0; j < dp.length; j++) {
-				dp[i][j] = new Pair();
-			}
-		}
-		for (int i = 0; i < coins.length; i++) {
-			dp[i][i].first = coins[i];
-		}
-		
-		for (int i = 0; i < dp.length; i++) {
-			for (int j = i + 1; j < dp[i].length; j++) {
-				//dp[i][j].first = Math.max(coins[i] + dp[i + 1][j].second, coins[j] + dp[i][j - 1].second);
-				if (coins[i] + dp[i + 1][j].second > coins[j] + dp[i][j - 1].second) {
-					dp[i][j].first = coins[i] + dp[i + 1][j].second;
-					dp[i][j].second = dp[i + 1][j].first;
+		for (int j = 0; j < coins.length; j++) {
+			for (int i = 0; i + j < coins.length; i++) {
+				int x = i;
+				int y = i + j;
+				if (x == y) {
+					dp[x][y] = sum[y + 1] - sum[x];
+				} else if (x + 1 == y) {
+					dp[x][y] = Math.max(dp[x + 1][y], dp[x][y - 1]);
 				} else {
-					dp[i][j].first = coins[j] + dp[i][j - 1].second;
-					dp[i][j].second = dp[i][j - 1].first;
+					int all = sum[y + 1] - sum[x];
+					dp[x][y] = Math.max(all - dp[x + 1][y], all - dp[x][y - 1]);
+					int left = all - dp[x + 1][y];
+					int right = all - dp[x][y - 1];
 				}
 			}
 		}
-		System.out.println(dp[0][coins.length - 1].first + " " + dp[0][coins.length - 1].second);
-		return dp[0][coins.length - 1].first > dp[0][coins.length - 1].second;
+		return dp[0][dp.length - 1] > (sum[sum.length - 1] - dp[0][dp.length - 1]);
 	}
+
 }

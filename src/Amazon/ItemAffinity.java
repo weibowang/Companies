@@ -1,14 +1,16 @@
 package Amazon;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class ItemAffinity {
-	
+public class ItemAffinity {	
 	
 	static class Pair {
         HashSet<String> set;
@@ -21,9 +23,11 @@ public class ItemAffinity {
 	
 	public static void main(String[] args) {
         try{
+//        	String fileName = "src/Amazon/abc.txt"; 
+//        	FileInputStream fis = new FileInputStream(fileName);
             BufferedReader br = 
                           new BufferedReader(new InputStreamReader(System.in));
-            
+
             String input;
             ArrayList<Pair> array = new ArrayList<Pair>();
             //While we have input on stdin
@@ -62,6 +66,7 @@ public class ItemAffinity {
                     }
                 }
             }
+            br.close();
             System.out.println("Ffd");
             for (int i = 0; i < array.size(); i++) {
                 HashSet<String> set = array.get(i).set;

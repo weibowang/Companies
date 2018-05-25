@@ -23,18 +23,18 @@ public class ProducerConsumer {
 //		c2.start();
 //		c3.start();
 		
-//		Thread p = new Thread(new Producer2());
-//		Thread p2 = new Thread(new Producer2());
-//		Thread p3 = new Thread(new Producer2());
-//		Thread c = new Thread(new Consumer2());
-//		Thread c2 = new Thread(new Consumer2());
-//		Thread c3 = new Thread(new Consumer2());
-//		p.start();
-//		p2.start();
-//		p3.start();
-//		c.start();
-//		c2.start();
-//		c3.start();
+		Thread p = new Thread(new Producer2());
+		Thread p2 = new Thread(new Producer2());
+		Thread p3 = new Thread(new Producer2());
+		Thread c = new Thread(new Consumer2());
+		Thread c2 = new Thread(new Consumer2());
+		Thread c3 = new Thread(new Consumer2());
+		p.start();
+		p2.start();
+		p3.start();
+		c.start();
+		c2.start();
+		c3.start();
 		
 //		Thread p = new Thread(new Producer3(q));
 //		Thread p2 = new Thread(new Producer3(q));

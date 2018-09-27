@@ -20,6 +20,7 @@ public class Producer1 implements Runnable {
 				}
 			}
 			try {
+				System.out.println("sleep......");
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

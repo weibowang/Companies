@@ -38,7 +38,6 @@ public class CurrencyExchange {
 		String requestURL = "https://api.pro.coinbase.com/products";
 		URL wikiRequest = new URL(requestURL);
 		Scanner scanner = new Scanner(wikiRequest.openStream());
-		//String response = scanner.useDelimiter("\\Z").next();
 		String response = "";
 		while (scanner.hasNext()) {
 			response += scanner.nextLine();
